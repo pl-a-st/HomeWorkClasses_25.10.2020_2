@@ -1,31 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-public struct TableСoordinates
-{
-    public List<PartsTable> PartsTablesСoordinate;
-}
-public struct PartsTable
-{
-    public List<int> StartingLeftLowerCorner;
-    public List<int> StartingRightLowerCorner;
-    public List<int> StartingRightUpperCorner;
-    public List<int> StartingLeftUpperCorner;
-}
 
 namespace HomeWorkClasses_25._10._2020_2
 {
     class Table
     {
-        public int Length;
-        public int Width;
-        public int Number;
-        public TableСoordinates TableСoordinates;
+        public int Length
+        {
+            get; private set;
+        }
+        public int Width
+        {
+            get; private set;
+        }
+        public int Number
+        {
+            get; private set;
+        }
+        public TableCoordinates TableCoordinates
+        {
+            get; private set;
+        }
         public Table(int length, int width, int number)
         {
             Length = length;
             Width = width;
             Number = number;
+        }
+        public void AddTableСoordinates(TableCoordinates tableСoordinates)
+        {
+            TableCoordinates = tableСoordinates;
+        }
+        public TableCoordinates CreateTableCoordinate()
+        {
+            List<int> coordinateLeftLower = new List<int>();
+            List<int> coordinateRightLower = new List<int>();
+            List<int> coordinateRightUpper = new List<int>();
+            List<int> coordinateLeftUpper = new List<int>();
+            TableCoordinates tableCoordinates = new TableCoordinates(coordinateLeftLower, coordinateRightLower,
+                coordinateRightUpper, coordinateLeftUpper);
+            tableCoordinates.AddTableCoordinates();
+            return tableCoordinates;
+        }
+        public void AddValueLeftLower(int horizontalСoordinate, int verticalCoordinate)
+        {
+            TableCoordinates.CoordinateLeftLower.Add(horizontalСoordinate);
+            TableCoordinates.CoordinateLeftLower.Add(verticalCoordinate);
+        }
+        public void AddValueRightLower(int horizontalСoordinate, int verticalCoordinate)
+        {
+            TableCoordinates.CoordinateRightLower.Add(horizontalСoordinate);
+            TableCoordinates.CoordinateRightLower.Add(verticalCoordinate);
+        }
+        public void AddValueRightUpper(int horizontalСoordinate, int verticalCoordinate)
+        {
+            TableCoordinates.CoordinateRightUpper.Add(horizontalСoordinate);
+            TableCoordinates.CoordinateRightUpper.Add(verticalCoordinate);
+        }
+        public void AddValueLeftUpper(int horizontalСoordinate, int verticalCoordinate)
+        {
+            TableCoordinates.CoordinateLeftUpper.Add(horizontalСoordinate);
+            TableCoordinates.CoordinateLeftUpper.Add(verticalCoordinate);
+        }
+        public void ChangeValueLeftLower(int horizontalСoordinate, int verticalCoordinate)
+        {
+            TableCoordinates.CoordinateLeftLower[0] = horizontalСoordinate;
+            TableCoordinates.CoordinateLeftLower[1] = verticalCoordinate;
+        }
+        public void ChangeValueRightLower(int horizontalСoordinate, int verticalCoordinate)
+        {
+            TableCoordinates.CoordinateRightLower[0] = horizontalСoordinate;
+            TableCoordinates.CoordinateRightLower[1] = verticalCoordinate;
+        }
+        public void ChangeValueRightUpper(int horizontalСoordinate, int verticalCoordinate)
+        {
+            TableCoordinates.CoordinateRightUpper[0] = horizontalСoordinate;
+            TableCoordinates.CoordinateRightUpper[1] = verticalCoordinate;
+        }
+        public void ChangeValueLeftUpper(int horizontalСoordinate, int verticalCoordinate)
+        {
+            TableCoordinates.CoordinateLeftUpper[0] = horizontalСoordinate;
+            TableCoordinates.CoordinateLeftUpper[1] = verticalCoordinate;
         }
     }
 }
