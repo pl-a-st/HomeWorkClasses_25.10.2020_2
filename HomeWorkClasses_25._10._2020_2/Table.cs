@@ -1,6 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+public struct TableСoordinates
+{
+    public List<PartsTable> PartsTablesСoordinate;
+}
+public struct PartsTable
+{
+    public List<int> StartingLeftLowerCorner;
+    public List<int> StartingRightLowerCorner;
+    public List<int> StartingRightUpperCorner;
+    public List<int> StartingLeftUpperCorner;
+}
 
 namespace HomeWorkClasses_25._10._2020_2
 {
@@ -8,6 +19,13 @@ namespace HomeWorkClasses_25._10._2020_2
     {
         public int Length;
         public int Width;
-        public tableСoordinates TableСoordinates;
+        public int Number;
+        public TableСoordinates TableСoordinates;
+        public Table(int length, int width, int number)
+        {
+            Length = length;
+            Width = width;
+            Number = number;
+        }
     }
 }
