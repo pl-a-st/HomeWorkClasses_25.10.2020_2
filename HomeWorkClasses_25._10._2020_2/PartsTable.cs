@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HomeWorkClasses_25._10._2020_2
 {
-    public class PartsTable
+    public class partsTable
     {
         public List<int> StartingLeftLowerCorner
         {

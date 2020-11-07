@@ -4,8 +4,8 @@ using System.Text;
 
 namespace HomeWorkClasses_25._10._2020_2
 {
-    public class TableСoordinates
+    public class tableСoordinates
     {
-        public List<PartsTable> PartsTablesСoordinate;
+        public List<partsTable> PartsTablesСoordinate;
     }
 }

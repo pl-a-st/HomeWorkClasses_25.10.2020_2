@@ -8,6 +8,6 @@ namespace HomeWorkClasses_25._10._2020_2
     {
         public int Length;
         public int Width;
-        public TableСoordinates TableСoordinates;
+        public tableСoordinates TableСoordinates;
     }
 }
