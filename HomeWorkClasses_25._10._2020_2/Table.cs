@@ -18,7 +18,7 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             get; private set;
         }
-        public TableCoordinates TableCoordinates
+        public Coordinates TableCoordinates
         {
             get; private set;
         }
@@ -28,50 +28,71 @@ namespace HomeWorkClasses_25._10._2020_2
             Width = width;
             Number = number;
         }
-        public void AddTableСoordinates(TableCoordinates tableСoordinates)
+        public void AddTableСoordinates(Coordinates tableСoordinates)
         {
             TableCoordinates = tableСoordinates;
         }
       
         public void AddValueLeftLower(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.CoordinateLeftLower.Add(horizontalСoordinate);
-            TableCoordinates.CoordinateLeftLower.Add(verticalCoordinate);
+            TableCoordinates.LeftLower.Add(horizontalСoordinate);
+            TableCoordinates.LeftLower.Add(verticalCoordinate);
         }
         public void AddValueRightLower(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.CoordinateRightLower.Add(horizontalСoordinate);
-            TableCoordinates.CoordinateRightLower.Add(verticalCoordinate);
+            TableCoordinates.RightLower.Add(horizontalСoordinate);
+            TableCoordinates.RightLower.Add(verticalCoordinate);
         }
         public void AddValueRightUpper(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.CoordinateRightUpper.Add(horizontalСoordinate);
-            TableCoordinates.CoordinateRightUpper.Add(verticalCoordinate);
+            TableCoordinates.RightUpper.Add(horizontalСoordinate);
+            TableCoordinates.RightUpper.Add(verticalCoordinate);
         }
         public void AddValueLeftUpper(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.CoordinateLeftUpper.Add(horizontalСoordinate);
-            TableCoordinates.CoordinateLeftUpper.Add(verticalCoordinate);
+            TableCoordinates.LeftUpper.Add(horizontalСoordinate);
+            TableCoordinates.LeftUpper.Add(verticalCoordinate);
         }
         public void ChangeValueLeftLower(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.CoordinateLeftLower[0] = horizontalСoordinate;
-            TableCoordinates.CoordinateLeftLower[1] = verticalCoordinate;
+            TableCoordinates.LeftLower[0] = horizontalСoordinate;
+            TableCoordinates.LeftLower[1] = verticalCoordinate;
         }
         public void ChangeValueRightLower(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.CoordinateRightLower[0] = horizontalСoordinate;
-            TableCoordinates.CoordinateRightLower[1] = verticalCoordinate;
+            TableCoordinates.RightLower[0] = horizontalСoordinate;
+            TableCoordinates.RightLower[1] = verticalCoordinate;
         }
         public void ChangeValueRightUpper(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.CoordinateRightUpper[0] = horizontalСoordinate;
-            TableCoordinates.CoordinateRightUpper[1] = verticalCoordinate;
+            TableCoordinates.RightUpper[0] = horizontalСoordinate;
+            TableCoordinates.RightUpper[1] = verticalCoordinate;
         }
         public void ChangeValueLeftUpper(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.CoordinateLeftUpper[0] = horizontalСoordinate;
-            TableCoordinates.CoordinateLeftUpper[1] = verticalCoordinate;
+            TableCoordinates.LeftUpper[0] = horizontalСoordinate;
+            TableCoordinates.LeftUpper[1] = verticalCoordinate;
         }
+        //public List<Table> GenerateRowTables()
+        //{
+        //    const int MIN_TABLE_COUNT = 4;
+        //    const int MAX_TABLE_COUNT = 10;
+        //    const int MIN_TABLE_LENGHT = 2;
+        //    const int MAX_TABLE_LENGHT = 6;
+        //    const int MIN_TABLE_WIDTH = 2;
+        //    const int MAX_TABLE_WIDTH = 6;
+
+        //    List<Table> rowTables = new List<Table>();
+        //    Random rnd = new Random();
+        //    int tableCount = rnd.Next(MIN_TABLE_COUNT, MAX_TABLE_COUNT);
+        //    for (int i = 0; i < tableCount; i++)
+        //    {
+        //        int lenght = rnd.Next(MIN_TABLE_LENGHT, MAX_TABLE_LENGHT);
+        //        int width = rnd.Next(MIN_TABLE_WIDTH, MAX_TABLE_WIDTH);
+        //        Table table = new Table(lenght, width, i + 1);
+        //        rowTables.Add(table);
+        //    }
+        //    return rowTables;
+        //}
     }
 }
