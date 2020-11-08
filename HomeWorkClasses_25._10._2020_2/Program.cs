@@ -18,10 +18,11 @@ namespace HomeWorkClasses_25._10._2020_2
                 "повороте, какие столы будут конфликтовать за расположение, уведомлять об этом и оставлять первый тогда без " +
                 "поворота, а если конфликт по-прежнему будет, то не поворачивать и второй.");
             Table table = new Table(3, 3, 1);
-            TableCoordinates tableCoordinates = table.CreateTableCoordinate();
+            Generate generate = new Generate();
+            TableCoordinates tableCoordinates = generate.CreateTableCoordinate();
             table.AddTableСoordinates(tableCoordinates);
             table.TableCoordinates.CoordinateLeftLower.Add(0);
-            Generate generate = new Generate();
+           
             generate.CreateRowTables();
 
 

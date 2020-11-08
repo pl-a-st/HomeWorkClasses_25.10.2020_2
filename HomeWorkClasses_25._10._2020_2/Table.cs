@@ -32,17 +32,7 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             TableCoordinates = tableСoordinates;
         }
-        public TableCoordinates CreateTableCoordinate()
-        {
-            List<int> coordinateLeftLower = new List<int>();
-            List<int> coordinateRightLower = new List<int>();
-            List<int> coordinateRightUpper = new List<int>();
-            List<int> coordinateLeftUpper = new List<int>();
-            TableCoordinates tableCoordinates = new TableCoordinates(coordinateLeftLower, coordinateRightLower,
-                coordinateRightUpper, coordinateLeftUpper);
-            tableCoordinates.AddTableCoordinates();
-            return tableCoordinates;
-        }
+      
         public void AddValueLeftLower(int horizontalСoordinate, int verticalCoordinate)
         {
             TableCoordinates.CoordinateLeftLower.Add(horizontalСoordinate);
