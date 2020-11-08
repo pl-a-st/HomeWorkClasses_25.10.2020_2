@@ -20,7 +20,15 @@ namespace HomeWorkClasses_25._10._2020_2
             Generate generate = new Generate();
             List<Table> rowTables = generate.GenerateRowTables();
             generate.AddRowTablesCoordinate(rowTables);
-
+            foreach (Table nextTable in rowTables)
+            {
+                Console.WriteLine("Стол {0} ЛН:{1},{2} ПН:{3},{4} ПВ:{5},{6} ЛВ:{7},{8} длина:{9} ширина:{10}", nextTable.Number,
+                    nextTable.TableCoordinates.CoordinateLeftLower[0], nextTable.TableCoordinates.CoordinateLeftLower[1],
+                    nextTable.TableCoordinates.CoordinateRightLower[0], nextTable.TableCoordinates.CoordinateRightLower[1],
+                    nextTable.TableCoordinates.CoordinateRightUpper[0], nextTable.TableCoordinates.CoordinateRightUpper[1],
+                    nextTable.TableCoordinates.CoordinateLeftUpper[0], nextTable.TableCoordinates.CoordinateLeftUpper[1],
+                    nextTable.Length, nextTable.Width);
+            }
 
            
         }

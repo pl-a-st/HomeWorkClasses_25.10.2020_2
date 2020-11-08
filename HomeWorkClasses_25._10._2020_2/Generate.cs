@@ -54,8 +54,8 @@ namespace HomeWorkClasses_25._10._2020_2
             {
                 rowTables[i].AddValueLeftLower(rowTables[i-1].TableCoordinates.CoordinateRightLower[0]+minDistanceTable+1, 0);
                 rowTables[i].AddValueRightLower(rowTables[i].TableCoordinates.CoordinateLeftLower[0] + rowTables[i].Length, 0);
-                rowTables[i].AddValueRightUpper(rowTables[i].TableCoordinates.CoordinateRightLower[0], rowTables[0].Width);
-                rowTables[i].AddValueLeftUpper(rowTables[i].TableCoordinates.CoordinateLeftLower[0], rowTables[0].Width);
+                rowTables[i].AddValueRightUpper(rowTables[i].TableCoordinates.CoordinateRightLower[0], rowTables[i].Width);
+                rowTables[i].AddValueLeftUpper(rowTables[i].TableCoordinates.CoordinateLeftLower[0], rowTables[i].Width);
             }
         }
 
