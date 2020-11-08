@@ -28,6 +28,10 @@ namespace HomeWorkClasses_25._10._2020_2
             Width = width;
             Number = number;
         }
+        public void NewNumber(int newNumber)
+        {
+            Number = newNumber;
+        }
         public void AddTableСoordinates(Coordinates tableСoordinates)
         {
             TableCoordinates = tableСoordinates;

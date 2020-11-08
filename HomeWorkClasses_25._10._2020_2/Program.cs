@@ -17,10 +17,11 @@ namespace HomeWorkClasses_25._10._2020_2
                 "сторон). 2* Всё то же самое, но столы отстоят друг от друга на расстоянии 1 клетки вправо. Оценивать при " +
                 "повороте, какие столы будут конфликтовать за расположение, уведомлять об этом и оставлять первый тогда без " +
                 "поворота, а если конфликт по-прежнему будет, то не поворачивать и второй.");
-            Generate generate = new Generate();
-            List<Table> rowTables = generate.GenerateRowTables();
-            generate.AddRowTablesCoordinateFiveCells(rowTables);
-            generate.AddNewTableFiveCells(rowTables);
+            RowTable rowTableService = new RowTable();
+            List<Table> rowTables = rowTableService.GenerateRowTables();
+            rowTableService.AddRowTablesCoordinateFiveCells(rowTables);
+            rowTableService.AddNewTableFiveCells(rowTables);
+            rowTableService.DeleteTable(rowTables);
             foreach (Table nextTable in rowTables)
             {
                 Console.WriteLine("Стол {0} ЛН:{1},{2} ПН:{3},{4} ПВ:{5},{6} ЛВ:{7},{8} длина:{9} ширина:{10}", nextTable.Number,
@@ -28,7 +29,7 @@ namespace HomeWorkClasses_25._10._2020_2
                     nextTable.TableCoordinates.RightLower[0], nextTable.TableCoordinates.RightLower[1],
                     nextTable.TableCoordinates.RightUpper[0], nextTable.TableCoordinates.RightUpper[1],
                     nextTable.TableCoordinates.LeftUpper[0], nextTable.TableCoordinates.LeftUpper[1],
-                    nextTable.Length, nextTable);
+                    nextTable.Length, nextTable.Width);
             }
 
            
