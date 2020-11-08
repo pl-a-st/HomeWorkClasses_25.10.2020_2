@@ -17,13 +17,9 @@ namespace HomeWorkClasses_25._10._2020_2
                 "сторон). 2* Всё то же самое, но столы отстоят друг от друга на расстоянии 1 клетки вправо. Оценивать при " +
                 "повороте, какие столы будут конфликтовать за расположение, уведомлять об этом и оставлять первый тогда без " +
                 "поворота, а если конфликт по-прежнему будет, то не поворачивать и второй.");
-            Table table = new Table(3, 3, 1);
             Generate generate = new Generate();
-            TableCoordinates tableCoordinates = generate.CreateTableCoordinate();
-            table.AddTableСoordinates(tableCoordinates);
-            table.TableCoordinates.CoordinateLeftLower.Add(0);
-           
-            generate.CreateRowTables();
+            List<Table> rowTables = generate.GenerateRowTables();
+            generate.AddRowTablesCoordinate(rowTables);
 
 
            

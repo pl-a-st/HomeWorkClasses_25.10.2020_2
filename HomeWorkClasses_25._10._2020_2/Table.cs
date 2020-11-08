@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HomeWorkClasses_25._10._2020_2
 {
-    class Table
+   public class Table
     {
         public int Length
         {
