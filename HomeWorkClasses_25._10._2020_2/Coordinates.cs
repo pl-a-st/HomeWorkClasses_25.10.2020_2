@@ -36,8 +36,26 @@ namespace HomeWorkClasses_25._10._2020_2
             PartsTableCoordinate.Add(RightLower);
             PartsTableCoordinate.Add(LeftLower);
         }
-        
-
+        public void getLeftLower(int horizontalСoordinate, int verticalCoordinate)
+        {
+            LeftLower[0] = horizontalСoordinate;
+            LeftLower[1] = verticalCoordinate;
+        }
+        public void getRightLower(int horizontalСoordinate, int verticalCoordinate)
+        {
+            RightLower[0] = horizontalСoordinate;
+            RightLower[1] = verticalCoordinate;
+        }
+        public void getRightUpper(int horizontalСoordinate, int verticalCoordinate)
+        {
+            RightUpper[0] = horizontalСoordinate;
+            RightUpper[1] = verticalCoordinate;
+        }
+        public void getLeftUpper(int horizontalСoordinate, int verticalCoordinate)
+        {
+            LeftUpper[0] = horizontalСoordinate;
+            LeftUpper[1] = verticalCoordinate;
+        }
     }
 }
 

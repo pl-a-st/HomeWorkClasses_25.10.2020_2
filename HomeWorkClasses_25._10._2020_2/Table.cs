@@ -59,23 +59,19 @@ namespace HomeWorkClasses_25._10._2020_2
         }
         public void NewValueLeftLower(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.LeftLower[0] = horizontalСoordinate;
-            TableCoordinates.LeftLower[1] = verticalCoordinate;
+            TableCoordinates.getLeftLower(horizontalСoordinate, verticalCoordinate);
         }
         public void NewValueRightLower(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.RightLower[0] = horizontalСoordinate;
-            TableCoordinates.RightLower[1] = verticalCoordinate;
+            TableCoordinates.getRightLower(horizontalСoordinate, verticalCoordinate);
         }
         public void NewValueRightUpper(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.RightUpper[0] = horizontalСoordinate;
-            TableCoordinates.RightUpper[1] = verticalCoordinate;
+            TableCoordinates.getRightUpper(horizontalСoordinate, verticalCoordinate);
         }
         public void NewValueLeftUpper(int horizontalСoordinate, int verticalCoordinate)
         {
-            TableCoordinates.LeftUpper[0] = horizontalСoordinate;
-            TableCoordinates.LeftUpper[1] = verticalCoordinate;
+            TableCoordinates.getLeftUpper(horizontalСoordinate, verticalCoordinate);
         }
         public void NewLength(int newLength)
         {
@@ -89,9 +85,11 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             int newWidth = Length;
             int newLength = Width;
-            NewLength(newWidth);
-            NewWidth(newLength);
-            NewValueRightLower(tabl)
+            NewLength(newLength);
+            NewWidth(newWidth);
+            NewValueRightLower(TableCoordinates.LeftLower[0] + Length-1, 0);
+            NewValueRightUpper(TableCoordinates.LeftLower[0] + Length-1, Width-1);
+            NewValueLeftUpper(TableCoordinates.LeftLower[0], Width - 1);
         }
     }
 }

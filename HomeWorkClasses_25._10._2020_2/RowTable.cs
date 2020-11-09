@@ -32,7 +32,7 @@ namespace HomeWorkClasses_25._10._2020_2
         public List<Table> GenerateRowTables()
         {
             const int MIN_TABLE_COUNT = 3;
-            const int MAX_TABLE_COUNT = 10;
+            const int MAX_TABLE_COUNT = 5;
             const int MIN_TABLE_LENGHT = 2;
             const int MAX_TABLE_LENGHT = 6;
             const int MIN_TABLE_WIDTH = 2;

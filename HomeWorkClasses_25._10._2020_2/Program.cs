@@ -31,8 +31,17 @@ namespace HomeWorkClasses_25._10._2020_2
                     nextTable.TableCoordinates.LeftUpper[0], nextTable.TableCoordinates.LeftUpper[1],
                     nextTable.Length, nextTable.Width);
             }
+            rowTables[0].TurnTable();
+            foreach (Table nextTable in rowTables)
+            {
+                Console.WriteLine("Стол {0} ЛН:{1},{2} ПН:{3},{4} ПВ:{5},{6} ЛВ:{7},{8} длина:{9} ширина:{10}", nextTable.Number,
+                    nextTable.TableCoordinates.LeftLower[0], nextTable.TableCoordinates.LeftLower[1],
+                    nextTable.TableCoordinates.RightLower[0], nextTable.TableCoordinates.RightLower[1],
+                    nextTable.TableCoordinates.RightUpper[0], nextTable.TableCoordinates.RightUpper[1],
+                    nextTable.TableCoordinates.LeftUpper[0], nextTable.TableCoordinates.LeftUpper[1],
+                    nextTable.Length, nextTable.Width);
+            }
 
-           
         }
         
     }
