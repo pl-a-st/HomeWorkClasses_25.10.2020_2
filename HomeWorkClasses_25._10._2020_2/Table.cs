@@ -18,6 +18,10 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             get; private set;
         }
+        public int Angle
+        {
+            get; private set;
+        }
         public Coordinates TableCoordinates
         {
             get; private set;
@@ -28,6 +32,19 @@ namespace HomeWorkClasses_25._10._2020_2
             Width = width;
             Number = number;
         }
+        public void AddAngle(int addingAngle)
+        {
+            Angle += addingAngle;
+            while (Angle>360)
+            {
+                Angle -= 360;
+            }
+            while(Angle<0)
+            {
+                Angle += 360;
+            }
+        }
+
         public void NewNumber(int newNumber)
         {
             Number = newNumber;
