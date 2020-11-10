@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+public struct Coordinate
+{
+    public int horizonte;
+    public int vertical;
+}
 namespace HomeWorkClasses_25._10._2020_2
 {
    public class Table
@@ -22,7 +26,19 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             get; private set;
         }
-        public Coordinates TableCoordinates
+        public Coordinate CoordinateLeftUpper
+        {
+            get; private set;
+        }
+        public Coordinate CoordinateLeftLower
+        {
+            get; private set;
+        }
+        public Coordinate CoordinateRightUpper
+        {
+            get; private set;
+        }
+        public Coordinate CoordinateRightLower
         {
             get; private set;
         }
@@ -31,6 +47,14 @@ namespace HomeWorkClasses_25._10._2020_2
             Length = length;
             Width = width;
             Number = number;
+        }
+        public void SetCoordinateLeftUpper(int horizonte, int vertical)
+        {
+            Coordinate coordinateLeftUpper = new Coordinate();
+            coordinateLeftUpper.horizonte = horizonte;
+            coordinateLeftUpper.vertical = vertical;
+            CoordinateLeftUpper = coordinateLeftUpper;
+            CalculateAllCoordinate();
         }
         public void AddAngle(int addingAngle)
         {
@@ -49,47 +73,6 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             Number = newNumber;
         }
-        public void AddTableСoordinates(Coordinates tableСoordinates)
-        {
-            TableCoordinates = tableСoordinates;
-        }
-      
-        public void AddValueLeftLower(int horizontalСoordinate, int verticalCoordinate)
-        {
-            TableCoordinates.LeftLower.Add(horizontalСoordinate);
-            TableCoordinates.LeftLower.Add(verticalCoordinate);
-        }
-        public void AddValueRightLower(int horizontalСoordinate, int verticalCoordinate)
-        {
-            TableCoordinates.RightLower.Add(horizontalСoordinate);
-            TableCoordinates.RightLower.Add(verticalCoordinate);
-        }
-        public void AddValueRightUpper(int horizontalСoordinate, int verticalCoordinate)
-        {
-            TableCoordinates.RightUpper.Add(horizontalСoordinate);
-            TableCoordinates.RightUpper.Add(verticalCoordinate);
-        }
-        public void AddValueLeftUpper(int horizontalСoordinate, int verticalCoordinate)
-        {
-            TableCoordinates.LeftUpper.Add(horizontalСoordinate);
-            TableCoordinates.LeftUpper.Add(verticalCoordinate);
-        }
-        public void NewValueLeftLower(int horizontalСoordinate, int verticalCoordinate)
-        {
-            TableCoordinates.getLeftLower(horizontalСoordinate, verticalCoordinate);
-        }
-        public void NewValueRightLower(int horizontalСoordinate, int verticalCoordinate)
-        {
-            TableCoordinates.getRightLower(horizontalСoordinate, verticalCoordinate);
-        }
-        public void NewValueRightUpper(int horizontalСoordinate, int verticalCoordinate)
-        {
-            TableCoordinates.getRightUpper(horizontalСoordinate, verticalCoordinate);
-        }
-        public void NewValueLeftUpper(int horizontalСoordinate, int verticalCoordinate)
-        {
-            TableCoordinates.getLeftUpper(horizontalСoordinate, verticalCoordinate);
-        }
         public void NewLength(int newLength)
         {
             Length = newLength;
@@ -98,15 +81,25 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             Width = newWidth;
         }
-        public void TurnTable()
+        public void TurnTable(int addingAngle)
         {
-            int newWidth = Length;
-            int newLength = Width;
-            NewLength(newLength);
-            NewWidth(newWidth);
-            NewValueRightLower(TableCoordinates.LeftLower[0] + Length-1, 0);
-            NewValueRightUpper(TableCoordinates.LeftLower[0] + Length-1, Width-1);
-            NewValueLeftUpper(TableCoordinates.LeftLower[0], Width - 1);
+            AddAngle(addingAngle);
+            CalculateAllCoordinate();
+        }
+        public void CalculateAllCoordinate()
+        {
+            Coordinate leftLower = new Coordinate();
+            Coordinate rightUpper = new Coordinate();
+            Coordinate rightLower = new Coordinate();
+            leftLower.horizonte = CoordinateLeftUpper.horizonte + (Length-1) * Convert.ToInt32(Math.Sin(Angle)) + (Width - 1) * Convert.ToInt32(Math.Cos(Angle));
+            leftLower.vertical = CoordinateLeftUpper.vertical + (Width - 1) * Convert.ToInt32(Math.Cos(Angle)) + (Length - 1) * Convert.ToInt32(Math.Sin(Angle));
+            CoordinateLeftLower = leftLower;
+            rightUpper.horizonte =CoordinateLeftUpper.horizonte + (Length - 1) * Convert.ToInt32(Math.Cos(Angle)) + (Width - 1) * Convert.ToInt32(Math.Sin(Angle));
+            rightUpper.vertical = CoordinateLeftUpper.vertical + (Width - 1) * Convert.ToInt32(Math.Sin(Angle)) + (Length - 1) * Convert.ToInt32(Math.Cos(Angle));
+            CoordinateRightUpper = rightUpper;
+            rightLower.horizonte = rightUpper.horizonte* Convert.ToInt32(Math.Sin(Angle))+leftLower.horizonte* Convert.ToInt32(Math.Cos(Angle));
+            rightLower.vertical= rightUpper.vertical* Convert.ToInt32(Math.Sin(Angle))+leftLower.vertical* Convert.ToInt32(Math.Cos(Angle));
+            CoordinateRightLower = rightUpper;     
         }
     }
 }

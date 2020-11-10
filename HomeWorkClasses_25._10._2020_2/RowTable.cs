@@ -6,17 +6,6 @@ namespace HomeWorkClasses_25._10._2020_2
 {
     public class RowTable
     {
-        public Coordinates CreateTableCoordinate()
-        {
-            List<int> coordinateLeftLower = new List<int>();
-            List<int> coordinateRightLower = new List<int>();
-            List<int> coordinateRightUpper = new List<int>();
-            List<int> coordinateLeftUpper = new List<int>();
-            Coordinates tableCoordinates = new Coordinates(coordinateLeftLower, coordinateRightLower,
-                coordinateRightUpper, coordinateLeftUpper);
-            tableCoordinates.AddTableCoordinates();
-            return tableCoordinates;
-        }
         public Table GenerateTable(int numberTable)
         {
             const int MIN_TABLE_LENGHT = 2;
@@ -50,59 +39,14 @@ namespace HomeWorkClasses_25._10._2020_2
             }
             return rowTables;
         }
-        public void AddRowTablesCoordinateFiveCells(List<Table> rowTables)
+        public void CalculateRowCoordinateLeftUpperFiveCells(List<Table> rowTables)
         {
             int minDistanceTable = 5;
-            foreach (Table nextTables in rowTables)
-            {
-                Coordinates tableCoordinates = CreateTableCoordinate();
-                nextTables.AddTableСoordinates(tableCoordinates);
-            }
-            rowTables[0].AddValueLeftUpper(0, 0);
-            int horCoordinate = rowTables[0].TableCoordinates.LeftUpper[0];
-            int vertCoordinate = rowTables[0].TableCoordinates.LeftUpper[1];
-            int sinAngle = Convert.ToInt32(Math.Sin(rowTables[0].Angle));
-            int cosAngle = Convert.ToInt32(Math.Cos(rowTables[0].Angle));
-            rowTables[0].AddValueLeftLower(horCoordinate + (rowTables[0].Width - 1) * sinAngle, vertCoordinate + (rowTables[0].Width - 1) * cosAngle);
-            rowTables[0].AddValueRightUpper(horCoordinate + (rowTables[0].Length - 1) * cosAngle, vertCoordinate + (rowTables[0].Length - 1) * sinAngle);
-            rowTables[0].AddValueRightLower(rowTables[0].TableCoordinates.RightUpper[0],rowTables[0].TableCoordinates.LeftLower[1]);
-            
+
+            rowTables[0].SetCoordinateLeftUpper(0, 0);            
             for (int i=1;i<rowTables.Count;i++)
             {
-                rowTables[i].AddValueLeftUpper(rowTables[i-1].TableCoordinates.RightUpper[0]+minDistanceTable+1, 0);
-                horCoordinate = rowTables[i].TableCoordinates.LeftUpper[0];
-                vertCoordinate = rowTables[i].TableCoordinates.LeftUpper[1];
-                rowTables[i].AddValueLeftLower(horCoordinate + (rowTables[i].Width - 1) * sinAngle, vertCoordinate + (rowTables[i].Width - 1) * cosAngle);
-                rowTables[i].AddValueRightUpper(horCoordinate + (rowTables[i].Length - 1) * cosAngle, vertCoordinate + (rowTables[i].Length - 1) * sinAngle);
-                rowTables[i].AddValueRightLower(rowTables[i].TableCoordinates.RightUpper[0], rowTables[i].TableCoordinates.LeftLower[1]);
-            }
-        }
-        public void AddTableCoordinateFiveCells(List<Table> rowTables)
-        {
-            int minDistanceTable = 5;
-            Coordinates tableCoordinates = CreateTableCoordinate();
-            rowTables[rowTables.Count - 1].AddTableСoordinates(tableCoordinates);
-            if (rowTables.Count - 1 == 0)
-            {
-                rowTables[0].AddValueLeftUpper(0, 0);
-                int horCoordinate = rowTables[0].TableCoordinates.LeftUpper[0];
-                int vertCoordinate = rowTables[0].TableCoordinates.LeftUpper[1];
-                int sinAngle = Convert.ToInt32(Math.Sin(rowTables[0].Angle));
-                int cosAngle = Convert.ToInt32(Math.Cos(rowTables[0].Angle));
-                rowTables[0].AddValueLeftLower(horCoordinate + (rowTables[0].Width - 1) * sinAngle, vertCoordinate + (rowTables[0].Width - 1) * cosAngle);
-                rowTables[0].AddValueRightUpper(horCoordinate + (rowTables[0].Length - 1) * cosAngle, vertCoordinate + (rowTables[0].Length - 1) * sinAngle);
-                rowTables[0].AddValueRightLower(rowTables[0].TableCoordinates.RightUpper[0], rowTables[0].TableCoordinates.LeftLower[1]);
-            }
-            else
-            {
-                rowTables[rowTables.Count - 1].AddValueLeftUpper(rowTables[rowTables.Count - 2].TableCoordinates.RightUpper[0] + minDistanceTable + 1, 0);
-                int horCoordinate = rowTables[rowTables.Count - 1].TableCoordinates.LeftUpper[0];
-                int vertCoordinate = rowTables[rowTables.Count - 1].TableCoordinates.LeftUpper[1];
-                int sinAngle = Convert.ToInt32(Math.Sin(rowTables[rowTables.Count - 1].Angle));
-                int cosAngle = Convert.ToInt32(Math.Cos(rowTables[rowTables.Count - 1].Angle));
-                rowTables[rowTables.Count - 1].AddValueLeftLower(horCoordinate + (rowTables[rowTables.Count - 1].Width - 1) * sinAngle, vertCoordinate + (rowTables[rowTables.Count - 1].Width - 1) * cosAngle);
-                rowTables[rowTables.Count - 1].AddValueRightUpper(horCoordinate + (rowTables[rowTables.Count - 1].Length - 1) * cosAngle, vertCoordinate + (rowTables[rowTables.Count - 1].Length - 1) * sinAngle);
-                rowTables[rowTables.Count - 1].AddValueRightLower(rowTables[rowTables.Count - 1].TableCoordinates.RightUpper[0], rowTables[rowTables.Count - 1].TableCoordinates.LeftLower[1]);
+                rowTables[i].SetCoordinateLeftUpper(rowTables[i - 1].CoordinateLeftUpper.horizonte + rowTables[i].Length - 1 + minDistanceTable + 1, 0);
             }
         }
         public void AddNewTableFiveCells(List<Table> rowTables)
@@ -110,6 +54,19 @@ namespace HomeWorkClasses_25._10._2020_2
             Table table = GenerateTable(rowTables.Count + 1);
             rowTables.Add(table);
             AddTableCoordinateFiveCells(rowTables);
+        }
+        public void AddTableCoordinateFiveCells(List<Table> rowTables)
+        {
+            int minDistanceTable = 5;
+            if (rowTables.Count - 1 == 0)
+            {
+                CalculateRowCoordinateLeftUpperFiveCells(rowTables);
+            }
+            else
+            {
+                rowTables[rowTables.Count - 1].SetCoordinateLeftUpper(rowTables[rowTables.Count - 2].CoordinateLeftUpper.horizonte +
+                    rowTables[rowTables.Count - 1].Length - 1 + minDistanceTable + 1, 0);
+            }
         }
         public void DeleteTable(List<Table> rowTables)
         {
@@ -129,14 +86,14 @@ namespace HomeWorkClasses_25._10._2020_2
                 DeleteTable(rowTables);
             }
         }
-        public void TurnTableInList(List<Table>RowTables,int NumberTable)
+        public void TurnTableInList(List<Table>RowTables,int NumberTable,int addingAngle)
         {
             foreach(Table nextTable in RowTables)
             {
                 bool noTable=true;
                 if (nextTable.Number==NumberTable)
                 {
-                    nextTable.TurnTable();
+                    nextTable.TurnTable(addingAngle);
                     noTable = false;
                 }
                 if (noTable)
@@ -145,11 +102,11 @@ namespace HomeWorkClasses_25._10._2020_2
                 }
             }
         }
-        public void TurnAllTableInList(List<Table> RowTables)
+        public void TurnAllTableInList(List<Table> RowTables,int addingAngle)
         {
             foreach (Table nextTable in RowTables)
             {
-                nextTable.TurnTable();
+                nextTable.TurnTable(addingAngle);
             }
         }
 

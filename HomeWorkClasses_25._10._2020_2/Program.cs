@@ -19,7 +19,7 @@ namespace HomeWorkClasses_25._10._2020_2
                 "поворота, а если конфликт по-прежнему будет, то не поворачивать и второй.");
             RowTable rowTableService = new RowTable();
             List<Table> rowTables = rowTableService.GenerateRowTables();
-            rowTableService.AddRowTablesCoordinateFiveCells(rowTables);
+            rowTableService.AddTableCoordinateFiveCells(rowTables);
             rowTableService.AddNewTableFiveCells(rowTables);
             rowTableService.DeleteTable(rowTables);
             foreach (Table nextTable in rowTables)
