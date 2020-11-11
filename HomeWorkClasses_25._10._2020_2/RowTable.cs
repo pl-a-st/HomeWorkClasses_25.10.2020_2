@@ -22,24 +22,17 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             const int MIN_TABLE_COUNT = 3;
             const int MAX_TABLE_COUNT = 5;
-            const int MIN_TABLE_LENGHT = 2;
-            const int MAX_TABLE_LENGHT = 6;
-            const int MIN_TABLE_WIDTH = 2;
-            const int MAX_TABLE_WIDTH = 6;
-
             List<Table> rowTables = new List<Table>();
             Random rnd =new Random();
             int tableCount = rnd.Next(MIN_TABLE_COUNT, MAX_TABLE_COUNT+1);
             for (int i=0;i<tableCount;i++)
             {
-                int lenght = rnd.Next(MIN_TABLE_LENGHT, MAX_TABLE_LENGHT+1);
-                int width = rnd.Next(MIN_TABLE_WIDTH, MAX_TABLE_WIDTH+1);
-                Table table = new Table(lenght, width, i + 1);
+                Table table = GenerateTable(i + 1);
                 rowTables.Add(table);
             }
             return rowTables;
         }
-        public void CalculateRowCoordinateLeftUpperFiveCells(List<Table> rowTables)
+        public void SetRowLeftUpperFiveCells(List<Table> rowTables)
         {
             int minDistanceTable = 5;
 
@@ -60,7 +53,7 @@ namespace HomeWorkClasses_25._10._2020_2
             int minDistanceTable = 5;
             if (rowTables.Count - 1 == 0)
             {
-                CalculateRowCoordinateLeftUpperFiveCells(rowTables);
+                SetRowLeftUpperFiveCells(rowTables);
             }
             else
             {
