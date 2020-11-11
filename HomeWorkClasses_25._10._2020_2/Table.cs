@@ -91,15 +91,15 @@ namespace HomeWorkClasses_25._10._2020_2
             Coordinate leftLower = new Coordinate();
             Coordinate rightUpper = new Coordinate();
             Coordinate rightLower = new Coordinate();
-            leftLower.horizonte = CoordinateLeftUpper.horizonte + (Length-1) * Convert.ToInt32(Math.Sin(Angle)) + (Width - 1) * Convert.ToInt32(Math.Cos(Angle));
-            leftLower.vertical = CoordinateLeftUpper.vertical + (Width - 1) * Convert.ToInt32(Math.Cos(Angle)) + (Length - 1) * Convert.ToInt32(Math.Sin(Angle));
+            leftLower.horizonte = CoordinateLeftUpper.horizonte + (Width - 1) * Convert.ToInt32(Math.Sin(Angle));
+            leftLower.vertical = CoordinateLeftUpper.vertical + (Width - 1) * Convert.ToInt32(Math.Cos(Angle));
             CoordinateLeftLower = leftLower;
-            rightUpper.horizonte =CoordinateLeftUpper.horizonte + (Length - 1) * Convert.ToInt32(Math.Cos(Angle)) + (Width - 1) * Convert.ToInt32(Math.Sin(Angle));
-            rightUpper.vertical = CoordinateLeftUpper.vertical + (Width - 1) * Convert.ToInt32(Math.Sin(Angle)) + (Length - 1) * Convert.ToInt32(Math.Cos(Angle));
+            rightUpper.horizonte =CoordinateLeftUpper.horizonte + (Length - 1) * Convert.ToInt32(Math.Cos(Angle)) ;
+            rightUpper.vertical = CoordinateLeftUpper.vertical + (Length - 1) * Convert.ToInt32(Math.Sin(Angle));
             CoordinateRightUpper = rightUpper;
-            rightLower.horizonte = rightUpper.horizonte* Convert.ToInt32(Math.Sin(Angle))+leftLower.horizonte* Convert.ToInt32(Math.Cos(Angle));
-            rightLower.vertical= rightUpper.vertical* Convert.ToInt32(Math.Sin(Angle))+leftLower.vertical* Convert.ToInt32(Math.Cos(Angle));
-            CoordinateRightLower = rightUpper;     
+            rightLower.horizonte = CoordinateLeftUpper.horizonte + (Length - 1)* Convert.ToInt32(Math.Cos(Angle))+ (Width - 1) * Convert.ToInt32(Math.Sin(Angle));
+            rightLower.vertical= CoordinateLeftUpper.vertical + (Length - 1) * Convert.ToInt32(Math.Sin(Angle)) + (Width - 1) * Convert.ToInt32(Math.Cos(Angle));
+            CoordinateRightLower = rightLower;     
         }
     }
 }

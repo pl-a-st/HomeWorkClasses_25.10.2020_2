@@ -53,9 +53,9 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             Table table = GenerateTable(rowTables.Count + 1);
             rowTables.Add(table);
-            AddTableCoordinateFiveCells(rowTables);
+            AddNewTableCoordinateFiveCells(rowTables);
         }
-        public void AddTableCoordinateFiveCells(List<Table> rowTables)
+        public void AddNewTableCoordinateFiveCells(List<Table> rowTables)
         {
             int minDistanceTable = 5;
             if (rowTables.Count - 1 == 0)
@@ -64,8 +64,11 @@ namespace HomeWorkClasses_25._10._2020_2
             }
             else
             {
-                rowTables[rowTables.Count - 1].SetCoordinateLeftUpper(rowTables[rowTables.Count - 2].CoordinateLeftUpper.horizonte +
-                    rowTables[rowTables.Count - 1].Length - 1 + minDistanceTable + 1, 0);
+                
+                    rowTables[rowTables.Count - 1].SetCoordinateLeftUpper(rowTables[rowTables.Count - 2].CoordinateLeftUpper.horizonte +
+                   rowTables[rowTables.Count - 1].Length - 1 + minDistanceTable + 1, 0);
+               
+               
             }
         }
         public void DeleteTable(List<Table> rowTables)
@@ -102,13 +105,24 @@ namespace HomeWorkClasses_25._10._2020_2
                 }
             }
         }
-        public void TurnAllTableInList(List<Table> RowTables,int addingAngle)
+        public void TurnAllTableInList(List<Table> rowTables,int addingAngle)
         {
-            foreach (Table nextTable in RowTables)
+            foreach (Table nextTable in rowTables)
             {
                 nextTable.TurnTable(addingAngle);
             }
         }
-
+        public void PrintRowTable(List<Table> rowTables)
+        {
+            foreach (Table nextTable in rowTables)
+            {
+                Console.WriteLine("Стол {0} ЛВ:({1}:{2}) ЛН:({3}:{4}) ПН:({5}:{6}) ПВ:({7}:{8}) длина:{9} ширина:{10}",
+                    nextTable.Number, nextTable.CoordinateLeftUpper.horizonte, nextTable.CoordinateLeftUpper.vertical,
+                    nextTable.CoordinateLeftLower.horizonte, nextTable.CoordinateLeftLower.vertical,
+                    nextTable.CoordinateRightLower.horizonte, nextTable.CoordinateRightLower.vertical,
+                    nextTable.CoordinateRightUpper.horizonte, nextTable.CoordinateRightUpper.vertical,
+                    nextTable.Length, nextTable.Width);
+            }
+        }
     }
 }
