@@ -26,7 +26,58 @@ namespace HomeWorkClasses_25._10._2020_2
         {
             RowTable rowTableService = new RowTable();
             Console.WriteLine("");
-            rowTableService.PrintRowTable(rowTables);
+            Console.WriteLine("Меню:");
+            Console.WriteLine("1. Вывести координаты ряда столов.");
+            Console.WriteLine("2. Повернуть стол на 90 градусов вправо.");
+            Console.WriteLine("3. Повернуть стол на 90 градусов влево.");
+            Console.WriteLine("4. Повернуть все столы на 90 градусов вправо.");
+            Console.WriteLine("5. Повернуть все столы на 90 градусов влево.");
+            Console.WriteLine("6. Добавить новый стол.");
+            Console.WriteLine("7. Удалить стол.");
+            Console.WriteLine("8. Выход");
+            Console.Write("Введите номер пунта меню:");
+            string menuItem = Console.ReadLine();
+            if (menuItem == "1")
+            {
+                rowTableService.PrintRowTable(rowTables);
+                Menu(rowTables);
+            }
+            if (menuItem=="2")
+            {
+                rowTableService.TurnTableInList(rowTables,-90);
+                Menu(rowTables);
+            }
+            if (menuItem == "3")
+            {
+                rowTableService.TurnTableInList(rowTables, 90);
+                Menu(rowTables);
+            }
+            if (menuItem == "4")
+            {
+                rowTableService.TurnAllTableInList(rowTables, -90);
+                Menu(rowTables);
+            }
+            if (menuItem == "5")
+            {
+                rowTableService.TurnAllTableInList(rowTables, 90);
+                Menu(rowTables);
+            }
+            if (menuItem == "6")
+            {
+                rowTableService.AddNewTableFiveCells(rowTables);
+                Menu(rowTables);
+            }
+            if (menuItem == "7")
+            {
+                rowTableService.DeleteTable(rowTables);
+                Menu(rowTables);
+            }
+            if (menuItem == "8")
+            {
+                Environment.Exit(0);
+            }
+            Console.WriteLine("Вы ввели значение не из меню.");
+            Menu(rowTables);
         }
         
     }

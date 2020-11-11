@@ -46,7 +46,7 @@ namespace HomeWorkClasses_25._10._2020_2
             rowTables[0].SetCoordinateLeftUpper(0, 0);            
             for (int i=1;i<rowTables.Count;i++)
             {
-                rowTables[i].SetCoordinateLeftUpper(rowTables[i - 1].CoordinateLeftUpper.horizonte + rowTables[i].Length - 1 + minDistanceTable + 1, 0);
+                rowTables[i].SetCoordinateLeftUpper(rowTables[i - 1].CoordinateLeftUpper.horizonte + rowTables[i-1].Length - 1 + minDistanceTable + 1, 0);
             }
         }
         public void AddNewTableFiveCells(List<Table> rowTables)
@@ -64,11 +64,9 @@ namespace HomeWorkClasses_25._10._2020_2
             }
             else
             {
-                
-                    rowTables[rowTables.Count - 1].SetCoordinateLeftUpper(rowTables[rowTables.Count - 2].CoordinateLeftUpper.horizonte +
-                   rowTables[rowTables.Count - 1].Length - 1 + minDistanceTable + 1, 0);
-               
-               
+                rowTables[rowTables.Count - 1].SetCoordinateLeftUpper(rowTables[rowTables.Count - 2].CoordinateLeftUpper.horizonte + 
+                    rowTables[rowTables.Count - 1].Length - 1 + minDistanceTable + 1, 0);
+                rowTables[rowTables.Count - 1].CalculateAllCoordinate();
             }
         }
         public void DeleteTable(List<Table> rowTables)
@@ -89,20 +87,23 @@ namespace HomeWorkClasses_25._10._2020_2
                 DeleteTable(rowTables);
             }
         }
-        public void TurnTableInList(List<Table>RowTables,int NumberTable,int addingAngle)
+        public void TurnTableInList(List<Table>rowTables,int addingAngle)
         {
-            foreach(Table nextTable in RowTables)
+            Console.Write("Введите номер стола: ");
+            int numberTable = Convert.ToInt32(Console.ReadLine());
+            bool noTable = true;
+            foreach (Table nextTable in rowTables)
             {
-                bool noTable=true;
-                if (nextTable.Number==NumberTable)
+                if (nextTable.Number==numberTable)
                 {
                     nextTable.TurnTable(addingAngle);
                     noTable = false;
-                }
-                if (noTable)
-                {
-                    Console.WriteLine("Указанный стол отсутствует в рдяе столов");
-                }
+                }  
+            }
+            if (noTable)
+            {
+                Console.WriteLine("Указанный стол отсутствует в рдяе столов.");
+                TurnTableInList(rowTables, addingAngle);
             }
         }
         public void TurnAllTableInList(List<Table> rowTables,int addingAngle)
